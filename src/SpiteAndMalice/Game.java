@@ -21,17 +21,6 @@ public class Game {
 
     public Game() {
 
-        newCard();
-        newCard();
-        newCard();
-        newCard();newCard();
-        newCard();
-        newCard();
-        newCard();newCard();
-        newCard();
-        newCard();
-        newCard();
-
         starter();
 
         while(!someoneWon){
@@ -105,7 +94,7 @@ public class Game {
     }
 
     private void getStartPlayer(){
-       currentPlayerIndex = 0;
+       currentPlayerIndex = (int)(Math.random() * nbPlayers);
        currentPlayer = players.get(currentPlayerIndex);
        log("currentPlayer : " + currentPlayer.getName());
     }
