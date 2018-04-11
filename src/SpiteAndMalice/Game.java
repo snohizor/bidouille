@@ -18,6 +18,9 @@ public class Game {
     Player currentPlayer;
     Player winner;
 
+    int inputInt;
+    Exception myLastError;
+
 
     public Game() {
 
@@ -47,11 +50,9 @@ public class Game {
 
     public void starter() {
 
-        log("Welcome to Spite & Malice\nHow many players ?");
-        Scanner sc = new Scanner(System.in);
-        int str = sc.nextInt();
-        log(str + " players.");
-        nbPlayers = str;
+        log("Welcome to Spite & Malice");
+        inputInt("How many players ? (1 to 5)",1,5);
+        log(nbPlayers + " players.");
 
         createPlayers();
 
@@ -66,6 +67,57 @@ public class Game {
     private void setUpCards(){
 
     }
+
+    private void inputInt(String message, int min, int max){
+        boolean inputIsOk = false;
+        int nbErrors = 0;
+
+        while(!inputIsOk) {
+            log(message);
+            try{
+                Scanner sc = new Scanner(System.in);
+                inputInt = sc.nextInt();
+            }catch(Exception e){myLastError = e;}
+                if (min <= inputInt && inputInt <= max) {
+                    nbPlayers = inputInt;
+                    inputIsOk = true;
+                } else {
+                    String msg1 = "This is not a correct answer.";
+                    String msg2 = "This is not a correct answer, please stop trying to fuck my code, thank you.";
+                    String msg3 = "Bro.";
+                    String msg4 = "Bro !";
+                    String msg5 = "Welcome to Spite & Malice Retard edition ! Press any key to press any key.";
+                    switch (nbErrors) {
+                        case 0:
+                        case 1:
+                        case 2:
+                            log(msg1);
+                            nbErrors++;
+                            break;
+                        case 3:
+                            log(msg2);
+                            nbErrors++;
+                            break;
+                        case 4:
+                            log(msg3);
+                            nbErrors++;
+                            break;
+                        case 5:
+                            log(msg4);
+                            nbErrors++;
+                            break;
+                        case 6:
+                            log(msg5);
+                            nbErrors++;
+                            break;
+                        default:
+                            log("error 001");
+                    }
+                }
+        }
+
+    }
+
 
     private void fullTurn() {
 
