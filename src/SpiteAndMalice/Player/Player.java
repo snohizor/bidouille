@@ -1,16 +1,42 @@
 package SpiteAndMalice.Player;
 
+import SpiteAndMalice.Card;
+
+import java.util.ArrayList;
+
+import static SpiteAndMalice.Card.newCard;
+import static SpiteAndMalice.Game.logp;
+
 public class Player {
     private String name;
-    private Hand hand;
+    private ArrayList<Card> hand;
     private Storage storage;
     private ObjectiveDeck obj;
 
     public Player(String name) {
         this.name = name;
+        this.hand = new ArrayList<>();
+
     }
 
     public Player() {
+    }
+
+    public void createHand() {
+        for (int i = 0; i <= 5; i++) {
+            try {
+                this.hand.add(newCard());
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    public void adminShowHand() {
+        for (Card card : hand) {
+            logp(card.getName());
+        }
     }
 
     public String getName() {
@@ -21,11 +47,11 @@ public class Player {
         this.name = name;
     }
 
-    public Hand getHand() {
+    public ArrayList<Card> getHand() {
         return hand;
     }
 
-    public void setHand(Hand hand) {
+    public void setHand(ArrayList<Card> hand) {
         this.hand = hand;
     }
 

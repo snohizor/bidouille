@@ -1,13 +1,8 @@
-import SpiteAndMalice.Card;
 import SpiteAndMalice.Game;
-import SpiteAndMalice.Player.Player;
-
-import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         //Loto loto = new Loto();
 
         //Spite & Malice

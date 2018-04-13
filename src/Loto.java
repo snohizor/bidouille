@@ -1,4 +1,3 @@
-import javax.sound.midi.Soundbank;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Locale;
@@ -6,22 +5,21 @@ import java.util.Locale;
 public class Loto {
 
 
-    int tirage[] = {0,0,0,0,0,0};
+    int tirage[] = {0, 0, 0, 0, 0, 0};
 
     long tests = 0;
     int totalTests = 0;
 
-    int myNumbers[] = {4,8,15,21,25,5};
-    int myNumbersez[] = {8,41,12,29,17,6};
+    int myNumbers[] = {4, 8, 15, 21, 25, 5};
+    int myNumbersez[] = {8, 41, 12, 29, 17, 6};
 
     boolean stop = false;
 
 
+    public Loto() {
 
-    public Loto(){
 
-
-        while(!stop) {
+        while (!stop) {
 
             tests++;
 
@@ -32,8 +30,8 @@ public class Loto {
             tirage[4] = getRng();
             tirage[5] = getRngOverTen();
 
-            if(tests%1000000 == 0)
-            System.out.println( NumberFormat.getNumberInstance(Locale.US).format(tests).toString());
+            if (tests % 1000000 == 0)
+                System.out.println(NumberFormat.getNumberInstance(Locale.US).format(tests));
 
             /*try{
             Thread.sleep(250);
@@ -44,8 +42,8 @@ public class Loto {
             /*System.out.println(Arrays.toString(tirage));*/
 
 
-            if(Arrays.equals(myNumbers, tirage)){
-                System.out.println("gg test : " + NumberFormat.getNumberInstance(Locale.US).format(tests).toString());
+            if (Arrays.equals(myNumbers, tirage)) {
+                System.out.println("gg test : " + NumberFormat.getNumberInstance(Locale.US).format(tests));
                 stop = true;
             }
 
@@ -54,16 +52,16 @@ public class Loto {
 
     }
 
-    private int getRng(){
+    private int getRng() {
 
-        int rng =  (int)(Math.random() * (49 - 1)) + 1;
+        int rng = (int) (Math.random() * (49 - 1)) + 1;
 
         boolean duplicate = tableContains(rng);
 
 
-        while(duplicate){
+        while (duplicate) {
 
-            rng = (int)(Math.random() * (49 - 1)) + 1;
+            rng = (int) (Math.random() * (49 - 1)) + 1;
 
             duplicate = tableContains(rng);
         }
@@ -72,15 +70,15 @@ public class Loto {
 
     }
 
-    private int getRngOverTen(){
-        int rng = (int)(Math.random() * (9 - 1)) + 1;
+    private int getRngOverTen() {
+        int rng = (int) (Math.random() * (9 - 1)) + 1;
         return rng;
     }
 
-    boolean tableContains(int toCheck){
+    boolean tableContains(int toCheck) {
 
-        for(int i : tirage){
-            if(i == toCheck)
+        for (int i : tirage) {
+            if (i == toCheck)
                 return true;
         }
 
